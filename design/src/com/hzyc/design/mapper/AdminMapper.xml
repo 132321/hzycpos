@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hzyc.design.mapper.AdminMapper">
+		<insert id="insertUser" parameterType="AdminAdd_FYT_Po">
+			insert into addauditorium(name,type,admin) values(#{name},#{type},#{admin})
+		</insert>
+		
+		<select id="queryProvince" resultType="AdminAdd_FYT_Po">
+			select id,name,type,admin from addauditorium 
+		</select>
+		
+		<select id="selectUpdate" parameterType="String" resultType="AdminAdd_FYT_Po">
+			select id,name,type,admin from addauditorium  where id=#{id}
+		</select>
+		
+		<update id="updateFYT" parameterType="AdminAdd_FYT_Po">
+			update addauditorium set  name = #{name} , type = #{type} , admin = #{admin} where id = #{id}
+		</update>
+		
+		<delete id="deleteFYT" parameterType="AdminAdd_FYT_Po">
+			delete from addauditorium where id=#{id}
+		</delete>
+		
+		<insert id="insertYP" parameterType="AdminAdd_YP_Po">
+			insert into film(photo,name,director,actor,country,language,duration,content,rtime,otime) VALUE(#{photo},#{name},#{director},#{actor},#{country},#{language},#{duration},#{content},#{rtime},#{otime})
+		</insert>
+		
+		<select id="selectYP" parameterType="String" resultType="AdminAdd_YP_Po">
+			select * from film 
+		</select>
+		
+		<select id="selectUpdateYP" parameterType="String" resultType="AdminAdd_YP_Po">
+			select * from film  where id=#{id}
+		</select>
+		<!-- photo,NAME,director,actor,country,LANGUAGE,duration,content,rtime,otime -->
+		<update id="updateYP" parameterType="AdminAdd_YP_Po">
+			update film set  photo = #{photo} ,name = #{name} , director = #{director} , actor = #{actor},country = #{country} , language = #{language} , duration = #{duration}, content = #{content} , rtime = #{rtime},otime = #{otime} where id = #{id}
+		</update>
+		
+		<delete id="deleteYP" parameterType="AdminAdd_YP_Po">
+			delete from film where id=#{id}
+		</delete>
+		
+		<insert id="shangying" parameterType="AdminSY_Po">
+			<!-- INSERT INTO shangying(ypname,rtime,fytname) VALUE("加勒比海盗","2017-06-20","无敌了") -->
+			insert into shangying(ypname,rtime,fytname) values(#{ypname},#{rtime},#{fytname})
+		</insert>
+		
+		<select id="selectshangying" parameterType="String" resultType="AdminSY_Po">
+			select * from shangying
+		</select>
+		
+		<delete id="deleteSY" parameterType="AdminSY_Po">
+			delete from shangying where id=#{id}
+		</delete>
+		
+		<select id="queryProvince1" parameterType="Page" resultType="AdminC_Po">
+			select * from buy limit #{position} , #{size}
+		</select>
+		
+		<select id="cUser" parameterType="String" resultType="UserZC_Po">
+			select * from registered  where id=#{id}
+		</select>
+		
+	</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hzyc.design.mapper.UserMapper">
+	
+		<insert id="ZC" parameterType="UserZC_Po">
+		<!-- INSERT INTO registered(username,PASSWORD,NAME,sex,email) VALUE("541194741","Qqailijuan","斌","男","541194741@qq.com") -->
+			insert into registered(username,password,name,sex,email) value(#{username},#{password},#{name},#{sex},#{email})
+		</insert>
+		
+		<select id="DL" parameterType="String" resultType="UserZC_Po">
+			select id,username,password from  registered where username=#{username}
+		</select>
+		
+		<select id="XS" parameterType="String" resultType="AdminAdd_YP_Po">
+			select * from film where name=#{name}
+		</select>
+		
+		<select id="XSxuanzuo" parameterType="String" resultType="AdminAdd_YP_Po">
+			select * from film where photo=#{photo}
+		</select>
+		
+		<select id="sFbN" parameterType="String" resultType="AdminSY_Po">
+			select * from shangying where ypname=#{ypname}
+		</select>
+		
+	</mapper>
